@@ -4,10 +4,10 @@
     --secondary-color: #66bb6a; /* Lighter Accent Green */
     --text-dark: #212121;
     --text-light: #757575;
-    --bg-light: #f9f9f9; /* Near-white background */
+    --bg-light: #f9f9f9;
     --white: #ffffff;
-    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.08); /* Soft Shadow */
-    --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15); /* Deeper Shadow for hover */
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
     --border-radius: 8px;
 }
 
@@ -22,10 +22,10 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     background-color: var(--bg-light);
-    scroll-behavior: smooth; /* Smooth scrolling for internal links */
+    scroll-behavior: smooth;
 }
 
-/* --- KEYFRAME ANIMATION: Fade In Up --- */
+/* --- KEYFRAME ANIMATION --- */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -39,11 +39,10 @@ body {
 
 /* Apply animation to main content sections */
 section, header {
-    /* UPDATED for SMOOTHNESS: Longer duration (1.5s) and gentle easing function */
     animation: fadeInUp 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-/* Delay for staggering the content entrance (UPDATED) */
+/* Staggered Content Entrance */
 .hero-content { animation-delay: 0.1s; } 
 .features-grid { animation-delay: 0.3s; }
 #benefits .info-section { animation-delay: 0.5s; }
@@ -58,7 +57,6 @@ h1, h2, h3 {
     font-weight: 700;
 }
 
-/* INCREASED H1 font size for the larger banner */
 h1 { 
     font-size: 3.2rem; 
     color: var(--white); 
@@ -101,16 +99,11 @@ a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
 
 .btn:hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 10px 20px rgba(56, 142, 60, 0.4); /* Green subtle glow effect */
+    box-shadow: 0 10px 20px rgba(56, 142, 60, 0.4);
 }
 
 .btn-secondary:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Darker hover shadow */
-}
-
-.btn-small {
-    padding: 0.5rem 1.5rem;
-    font-size: 1rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* --- LAYOUT UTILITIES --- */
@@ -152,10 +145,9 @@ nav {
     align-items: center;
 }
 
-.nav-links a { font-weight: 500; }
 .nav-links a:not(.btn):hover { color: var(--primary-color); }
 
-/* --- HERO SECTION (Large Banner) --- */
+/* --- HERO SECTION --- */
 .hero {
     /* Offset fixed header height */
     margin-top: 64px; 
@@ -166,7 +158,6 @@ nav {
     background-size: cover;
     background-position: center center;
     
-    /* *** KEY CHANGE: Increased height for a much bigger banner *** */
     min-height: 65vh; 
     
     display: flex;
@@ -179,17 +170,13 @@ nav {
 
 .hero-content p {
     color: #e0e0e0;
-    font-size: 1.3rem; /* Reverting to slightly larger font for big banner */
+    font-size: 1.3rem; 
     font-weight: 300;
     margin-bottom: 3rem; 
-    max-width: 700px; /* Increased max width */
+    max-width: 700px; 
     margin-left: auto;
     margin-right: auto;
 }
-.hero-content .btn {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-}
-
 
 /* --- FEATURES GRID --- */
 .features {
@@ -198,7 +185,6 @@ nav {
 
 .features-grid {
     display: grid;
-    /* Grid for auto-fit responsiveness */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
 }
@@ -213,7 +199,7 @@ nav {
 }
 
 .feature-card:hover {
-    transform: translateY(-8px); /* Card lift animation */
+    transform: translateY(-8px);
     box-shadow: var(--shadow-hover);
 }
 
@@ -221,14 +207,11 @@ nav {
     font-size: 3rem;
     margin-bottom: 1rem;
     color: var(--primary-color);
-    /* Subtle pulsing effect on icon - for the demo only */
-    /* animation: pulse 2s infinite alternate; */
 }
 
 /* --- VISUAL & INFO SECTION (Split Layout) --- */
 .info-section {
     display: flex;
-    /* Flexbox for side-by-side layout */
     flex-direction: row;
     align-items: center;
     gap: 6rem;
@@ -282,7 +265,7 @@ nav {
     padding-bottom: 30px;
 }
 
-/* Added visual connectors between steps using pseudo-elements */
+/* Visual connectors between steps */
 .step:not(:last-child)::after {
     content: '';
     position: absolute;
@@ -306,7 +289,7 @@ nav {
     margin: 0 auto 1.5rem auto;
     font-weight: bold;
     font-size: 1.5rem;
-    box-shadow: 0 0 0 5px rgba(56, 142, 60, 0.2); /* Ring effect */
+    box-shadow: 0 0 0 5px rgba(56, 142, 60, 0.2);
 }
 
 /* --- CTA SECTION --- */
@@ -349,18 +332,37 @@ footer {
         gap: 2rem;
     }
     .step:not(:last-child)::after {
-        content: none; /* Hide visual connectors on smaller screens */
+        content: none; /* Hide visual connectors on tablets/smaller desktops */
     }
 }
 
 @media (max-width: 768px) {
-    h1 { font-size: 2.5rem; } /* Adjusted for mobile banner */
+    /* TYPOGRAPHY Adjustments */
+    h1 { 
+        font-size: 2.2rem; /* Reduced H1 size for better fit on mobile */
+        margin-bottom: 0.8rem;
+    } 
     h2 { font-size: 1.8rem; }
     
+    /* HEADER & NAV Adjustments */
+    nav {
+        justify-content: center; /* Center the logo when links are hidden */
+        padding: 1rem 1.5rem; 
+    }
     .nav-links { display: none; }
     
+    /* HERO Section Improvements for Mobile Tightness */
+    .hero { 
+        min-height: 60vh; 
+        padding: 5rem 1.5rem; /* Better horizontal padding */
+    }
+    .hero-content p {
+        font-size: 1.1rem; 
+        margin-bottom: 2rem; 
+    }
+    
+    /* Info Section Stacking */
     .info-section {
-        /* Stack vertically on mobile */
         flex-direction: column;
         text-align: center;
     }
@@ -368,7 +370,6 @@ footer {
     .info-image { order: -1; margin-bottom: 2rem; } /* Push image to top */
     .list-item { justify-content: center; }
 
-    .hero { min-height: 50vh; } /* Increased banner height for mobile */
-    
-    .container { padding: 3rem 0; }
+    /* Other Mobile Adjustments */
+    .container { padding: 3rem 1.5rem; } /* Adjusted container padding */
 }
