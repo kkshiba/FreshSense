@@ -12,7 +12,11 @@
     <header>
         <nav>
             <div class="logo">FreshSense</div>
-            <div class="nav-links">
+            
+            <button class="hamburger" aria-label="Toggle navigation menu">
+                &#9776; </button>
+            
+            <div class="nav-links" id="mobile-nav"> 
                 <a href="#features">Features</a>
                 <a href="#how-it-works">How It Works</a>
                 <a href="#benefits">Benefits</a>
@@ -133,5 +137,15 @@
         </div>
     </footer>
 
-</body>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.getElementById('mobile-nav');
+
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        });
+    </script>
+    </body>
 </html>
