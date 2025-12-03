@@ -131,6 +131,7 @@ nav {
     padding: 1rem 5%;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative; /* Needed for absolute positioning of mobile menu */
 }
 
 .logo {
@@ -146,6 +147,18 @@ nav {
 }
 
 .nav-links a:not(.btn):hover { color: var(--primary-color); }
+
+/* Hamburger Button (Desktop state: Hidden) */
+.hamburger {
+    display: none; 
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
 
 /* --- HERO SECTION --- */
 .hero {
@@ -332,29 +345,66 @@ footer {
         gap: 2rem;
     }
     .step:not(:last-child)::after {
-        content: none; /* Hide visual connectors on tablets/smaller desktops */
+        content: none;
     }
 }
 
 @media (max-width: 768px) {
     /* TYPOGRAPHY Adjustments */
     h1 { 
-        font-size: 2.2rem; /* Reduced H1 size for better fit on mobile */
+        font-size: 2.2rem;
         margin-bottom: 0.8rem;
     } 
     h2 { font-size: 1.8rem; }
     
-    /* HEADER & NAV Adjustments */
+    /* HEADER & NAV MODIFICATIONS */
     nav {
-        justify-content: center; /* Center the logo when links are hidden */
+        /* Revert to justify-content: space-between for logo and hamburger */
+        justify-content: space-between; 
         padding: 1rem 1.5rem; 
     }
-    .nav-links { display: none; }
+    
+    .hamburger {
+        display: block; /* SHOW the hamburger button on mobile */
+    }
+
+    .nav-links {
+        /* HIDE the links by default and set up dropdown styling */
+        display: none; 
+        position: absolute;
+        top: 64px; /* Below the fixed header (if header height is ~64px) */
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: var(--white);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        padding: 0;
+        z-index: 999;
+    }
+    
+    .nav-links a {
+        padding: 0.75rem 1.5rem;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid var(--bg-light);
+    }
+    
+    /* Style the Get Started button within the dropdown */
+    .nav-links .btn-primary {
+        margin: 1rem 1.5rem;
+        width: auto;
+        align-self: center; /* Center the button in the column */
+    }
+
+    /* TOGGLE CLASS: Show the menu when 'active' */
+    .nav-links.active {
+        display: flex;
+    }
     
     /* HERO Section Improvements for Mobile Tightness */
     .hero { 
         min-height: 60vh; 
-        padding: 5rem 1.5rem; /* Better horizontal padding */
+        padding: 5rem 1.5rem; 
     }
     .hero-content p {
         font-size: 1.1rem; 
@@ -367,9 +417,9 @@ footer {
         text-align: center;
     }
     
-    .info-image { order: -1; margin-bottom: 2rem; } /* Push image to top */
+    .info-image { order: -1; margin-bottom: 2rem; }
     .list-item { justify-content: center; }
 
     /* Other Mobile Adjustments */
-    .container { padding: 3rem 1.5rem; } /* Adjusted container padding */
+    .container { padding: 3rem 1.5rem; }
 }
