@@ -1,0 +1,374 @@
+/* --- CSS VARIABLES & RESET --- */
+:root {
+    --primary-color: #388e3c; /* Deeper Forest Green */
+    --secondary-color: #66bb6a; /* Lighter Accent Green */
+    --text-dark: #212121;
+    --text-light: #757575;
+    --bg-light: #f9f9f9; /* Near-white background */
+    --white: #ffffff;
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.08); /* Soft Shadow */
+    --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15); /* Deeper Shadow for hover */
+    --border-radius: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    scroll-behavior: smooth; /* Smooth scrolling for internal links */
+}
+
+/* --- KEYFRAME ANIMATION: Fade In Up --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px); 
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply animation to main content sections */
+section, header {
+    /* UPDATED for SMOOTHNESS: Longer duration (1.5s) and gentle easing function */
+    animation: fadeInUp 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Delay for staggering the content entrance (UPDATED) */
+.hero-content { animation-delay: 0.1s; } 
+.features-grid { animation-delay: 0.3s; }
+#benefits .info-section { animation-delay: 0.5s; }
+#how-it-works .steps { animation-delay: 0.7s; } 
+#contact .container { animation-delay: 0.9s; } 
+
+
+/* --- TYPOGRAPHY --- */
+h1, h2, h3 {
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+/* INCREASED H1 font size for the larger banner */
+h1 { 
+    font-size: 3.2rem; 
+    color: var(--white); 
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5); 
+}
+h2 { font-size: 2.2rem; color: var(--primary-color); text-align: center; margin-bottom: 2.5rem; }
+h3 { font-size: 1.35rem; font-weight: 600; }
+p { margin-bottom: 1rem; color: var(--text-light); }
+
+a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
+
+/* --- BUTTONS & HOVER EFFECTS --- */
+.btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+
+.btn-secondary {
+    background-color: var(--white);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-white {
+    background-color: var(--white);
+    color: var(--primary-color);
+}
+
+.btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(56, 142, 60, 0.4); /* Green subtle glow effect */
+}
+
+.btn-secondary:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Darker hover shadow */
+}
+
+.btn-small {
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+}
+
+/* --- LAYOUT UTILITIES --- */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 0;
+}
+
+/* --- HEADER & NAV --- */
+header {
+    background: var(--white);
+    box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a { font-weight: 500; }
+.nav-links a:not(.btn):hover { color: var(--primary-color); }
+
+/* --- HERO SECTION (Large Banner) --- */
+.hero {
+    /* Offset fixed header height */
+    margin-top: 64px; 
+    
+    /* BACKGROUND IMAGE AND OVERLAY */
+    background: linear-gradient(rgba(56, 142, 60, 0.75), rgba(56, 142, 60, 0.85)), 
+                url('https://www.delhidudes.com/wp-content/uploads/2025/01/mushroom-cultivation-in-indoor-farms-growing-of-mushrooms-from-compost-into-casing-on-organic-farm-photo.jpeg');
+    background-size: cover;
+    background-position: center center;
+    
+    /* *** KEY CHANGE: Increased height for a much bigger banner *** */
+    min-height: 65vh; 
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    padding: 0 1rem;
+}
+
+.hero-content p {
+    color: #e0e0e0;
+    font-size: 1.3rem; /* Reverting to slightly larger font for big banner */
+    font-weight: 300;
+    margin-bottom: 3rem; 
+    max-width: 700px; /* Increased max width */
+    margin-left: auto;
+    margin-right: auto;
+}
+.hero-content .btn {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+
+/* --- FEATURES GRID --- */
+.features {
+    background-color: var(--white);
+}
+
+.features-grid {
+    display: grid;
+    /* Grid for auto-fit responsiveness */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background: var(--bg-light);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    text-align: center;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px); /* Card lift animation */
+    box-shadow: var(--shadow-hover);
+}
+
+.icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    /* Subtle pulsing effect on icon - for the demo only */
+    /* animation: pulse 2s infinite alternate; */
+}
+
+/* --- VISUAL & INFO SECTION (Split Layout) --- */
+.info-section {
+    display: flex;
+    /* Flexbox for side-by-side layout */
+    flex-direction: row;
+    align-items: center;
+    gap: 6rem;
+}
+
+.info-image, .info-text {
+    flex: 1;
+}
+
+.info-image img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-hover);
+}
+
+.list-item {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.05rem;
+}
+
+.check {
+    color: var(--secondary-color);
+    font-weight: 900;
+    font-size: 1.5rem;
+}
+
+/* --- HOW IT WORKS (Details - Steps) --- */
+.how-it-works {
+    background-color: var(--bg-light);
+    text-align: center;
+}
+
+.steps {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4rem;
+    margin-top: 3rem;
+    position: relative;
+    padding-top: 20px;
+}
+
+.step {
+    flex: 1;
+    min-width: 250px;
+    max-width: 350px;
+    position: relative;
+    padding-bottom: 30px;
+}
+
+/* Added visual connectors between steps using pseudo-elements */
+.step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: calc(50% + 175px); 
+    width: 60%;
+    height: 2px;
+    background-color: var(--secondary-color);
+    opacity: 0.3;
+}
+
+.step-number {
+    background-color: var(--primary-color);
+    color: var(--white);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
+    font-weight: bold;
+    font-size: 1.5rem;
+    box-shadow: 0 0 0 5px rgba(56, 142, 60, 0.2); /* Ring effect */
+}
+
+/* --- CTA SECTION --- */
+.cta-section {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 6rem 1rem;
+}
+
+.cta-section h2 { color: var(--white); margin-bottom: 1.5rem; }
+.cta-section p { color: #e8f5e9; font-size: 1.2rem; margin-bottom: 3rem; }
+
+/* --- FOOTER --- */
+footer {
+    background-color: #222;
+    color: #aaa;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.footer-logo {
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+}
+
+.social-links { margin: 1.5rem 0; }
+.social-links a { margin: 0 15px; color: #aaa; font-size: 1.1rem; }
+.social-links a:hover { color: var(--white); }
+
+.copyright {
+    font-size: 0.85rem;
+    margin-top: 2rem;
+    color: #888;
+}
+
+/* --- MEDIA QUERIES (RESPONSIVENESS) --- */
+@media (max-width: 1024px) {
+    .info-section {
+        gap: 2rem;
+    }
+    .step:not(:last-child)::after {
+        content: none; /* Hide visual connectors on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; } /* Adjusted for mobile banner */
+    h2 { font-size: 1.8rem; }
+    
+    .nav-links { display: none; }
+    
+    .info-section {
+        /* Stack vertically on mobile */
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .info-image { order: -1; margin-bottom: 2rem; } /* Push image to top */
+    .list-item { justify-content: center; }
+
+    .hero { min-height: 50vh; } /* Increased banner height for mobile */
+    
+    .container { padding: 3rem 0; }
+}
